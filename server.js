@@ -1,50 +1,19 @@
-var express = require('express'),
-	stylus = require('stylus'),
-	logger = require('morgan'),
-	bodyParser = require('body-parser')
-	mongoose = require('mongoose');
+var express = require('express');
 
-var env = process.env.NODE_ENV= process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV= process.env.NODE_ENV || 'production';
 
 var app = express();
 
-function compile(str, path){
-	return stylus(str).set('filename', path);
-}
+var config = require("./server/config/config")[env];
 
-app.set('views', __dirname + '/server/views');
-app.set('view engine','jade');
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(stylus.middleware(
-	{
-		src: __dirname + '/public',
-		compile: compile
-	}
-));
-app.use(express.static(__dirname + '/public'));
+require("./server/config/express")(app,config);
 
-if (env === 'development') {
-	mongoose.connect('mongodb://localhost/hockeyfan'); 
-} else {
-    mongoose.connect('mongodb://hockeyfan1:staywell@ds063160.mongolab.com:63160/hockeyfan');
-}
-var db = mongoose.connection;
-db.on('error',console.error.bind(console, 'connection error...'));
-db.once('open',function callback() {
-	console.log('hockeyfan db opened');
-});
+require("./server/config/mongoose")(config);
 
-var port = process.env.PORT || 3030;
+require("./server/config/passport")();
 
-app.listen(port);
-console.log('Listening on port ' + port + '...');
+require("./server/config/routes")(app);
 
-app.get('/partials/:partialPath', function (req, res) {
-    res.render('partials/' + req.params.partialPath);
-});
-
-app.get('*', function (req, res) {
-    res.render('index');
-});
+//app.listen(config.port);
+app.listen(process.env.PORT);
+console.log('Listening on port ' + process.env.PORT + '...');
