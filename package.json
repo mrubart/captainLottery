@@ -1,7 +1,7 @@
 {
   "name": "hockeyfan",
   "version": "1.0.0",
-  "description": "super great hockey fantasy engine",
+  "description": "super great team architect engine",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
