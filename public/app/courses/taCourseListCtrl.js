@@ -1,5 +1,5 @@
-angular.module('app').controller('hfCourseListCtrl', function($scope, hfCachedCourses){
-  $scope.courses = hfCachedCourses.query(); 
+angular.module('app').controller('taCourseListCtrl', function($scope, taCachedCourses){
+  $scope.courses = taCachedCourses.query(); 
   
   $scope.sortOptions = [{value:"title", text: "Sort by Title"},
     {value: "published", text: "Sort by Publish Date"}];

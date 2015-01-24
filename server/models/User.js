@@ -39,6 +39,6 @@ function createDefaultUsers() {
       User.create({firstName:'Jimmy', lastName:'Watkins', username:'JWatkins', salt: salt, hashed_pwd: hash});
     }
   });
-};
+}
 
 exports.createDefaultUsers = createDefaultUsers;

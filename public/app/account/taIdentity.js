@@ -1,7 +1,7 @@
-angular.module('app').factory('hfIdentity', function($window, hfUser){
+angular.module('app').factory('taIdentity', function($window, taUser){
   var currentUser;
   if(!!$window.bootstrappedUserObject){
-    currentUser = new hfUser();
+    currentUser = new taUser();
     angular.extend(currentUser, $window.bootstrappedUserObject);
   }
   return {

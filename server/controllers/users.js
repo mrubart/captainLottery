@@ -4,7 +4,7 @@ var User = require("mongoose").model("User"),
 exports.getUsers = function (req, res) {
   User.find({}).exec(function(err, collection){
     res.send(collection);
-  })
+  });
 };
     
 exports.createUser = function(req, res, next){

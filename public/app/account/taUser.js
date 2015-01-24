@@ -1,4 +1,4 @@
-angular.module('app').factory('hfUser', function($resource){
+angular.module('app').factory('taUser', function($resource){
   var UserResource = $resource('/api/users/:id', {_id: "@id"}, {
     update: {method:'PUT', isArray:false}
   });

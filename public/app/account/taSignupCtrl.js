@@ -1,4 +1,4 @@
-angular.module('app').controller('hfSignupCtrl', function($scope, hfUser, hfNotifier, $location, hfAuth){
+angular.module('app').controller('taSignupCtrl', function($scope, taUser, taNotifier, $location, taAuth){
   $scope.signup = function() {
     var newUserData = {
       username: $scope.email,
@@ -7,11 +7,11 @@ angular.module('app').controller('hfSignupCtrl', function($scope, hfUser, hfNoti
       lastName: $scope.lname
     };
     
-    hfAuth.createUser(newUserData).then(function() {
-      hfNotifier.notify('User account created!');
+    taAuth.createUser(newUserData).then(function() {
+      taNotifier.notify('User account created!');
       $location.path("/");
     }, function(reason){
-      hfNotifier.error(reason);
+      taNotifier.error(reason);
     });
   }
 });

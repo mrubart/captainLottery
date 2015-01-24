@@ -1,10 +1,10 @@
-angular.module('app').factory('hfCachedCourses', function(hfCourse) {
+angular.module('app').factory('taCachedCourses', function(taCourse) {
   var courseList;
   
   return {
     query: function() {
       if(!courseList) {
-        courseList = hfCourse.query();
+        courseList = taCourse.query();
       }
       
       return courseList;
