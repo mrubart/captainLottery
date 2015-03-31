@@ -2,7 +2,10 @@ var auth = require("./auth"),
   users = require("../controllers/users"),
   courses = require('../controllers/courses'),
   mongoose = require("mongoose"),
-  User = mongoose.model('User');
+  User = mongoose.model('User'),
+  lotteries = require('../controllers/lotteries'),
+  scrapers = require("../controllers/scrapers"),
+  powerball = require("../controllers/powerballs");
 
 module.exports = function(app){
     
@@ -13,6 +16,16 @@ module.exports = function(app){
   app.get('/api/courses', courses.getCourses);
   app.get('/api/courses/:id', courses.getCourseById);
   
+  app.get('/api/lotteries', lotteries.getLotteries);
+  app.get('/api/lotteries/:id', lotteries.getLotteryById);
+  
+  app.get('/api/scrapers', auth.requiresRole('admin'), scrapers.getScrapers);
+  app.get('/api/scrapers/:id', auth.requiresRole('admin'), scrapers.getScraperById);
+  
+  app.get('/api/scrapePowerballs',scrapers.scrapePowerballs);
+  
+  app.get('/api/powerball', powerball.getPowerballDraws);
+  app.get('/api/powerball/:id', powerball.getPowerballDrawById);
   
   app.get('/partials/*', function (req, res) {
       res.render('../../public/app/' + req.params[0]);

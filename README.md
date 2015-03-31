@@ -1,5 +1,4 @@
-Team Architext
+Captain Lottery
 =========
-Hello folks! this is based off code I wrote during a tutorial. 
-
-This will allow you to quickly and efficiently manage all manner of sports teams in a lightweight and responsive platform
+Hello folks! Get ready to have your ship come in! Using the latest in data analsys
+Captain Lottery will help you make better lottery picks !

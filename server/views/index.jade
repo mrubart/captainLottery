@@ -4,12 +4,14 @@ block main-content
   .navbar.navbar-inverse.navbar-fixed-top
     .container
       .navbar-header
-        a.navbar-brand(href="/") Team Architect
-          h6 -Extreme Team Architect
+        a.navbar-brand(href="/") Captain Lottery
+          h6 -Capt Lottery
       .navbar-collapse.collapse
         ul.nav.navbar-nav
           li
             a(href="/") Home
+          li
+            a(href="/lotteries") Lotteries
           li
             a(href="/courses") Courses
         div(ng-include="'/partials/account/navbar-login'")
@@ -18,4 +20,4 @@ block main-content
     div(ng-view)
   
   footer.container.text-center
-    p &copy; 2015 Team Architect Intl Ltd.
+    p &copy; 2015 Captain Lottery Ltd.

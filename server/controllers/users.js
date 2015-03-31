@@ -3,6 +3,10 @@ var User = require("mongoose").model("User"),
 
 exports.getUsers = function (req, res) {
   User.find({}).exec(function(err, collection){
+    if(err)
+    {
+      console.log("Error: getUsers - " + err.message);
+    }
     res.send(collection);
   });
 };

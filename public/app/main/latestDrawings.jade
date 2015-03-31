@@ -1,0 +1,6 @@
+.panel.panel-primary
+  .panel-heading.text-center Latest Lucky Numbers
+  .panel-body
+    .row(ng-repeat="lottery in lotteries | filter: {active:true}")
+      .col-md-12
+        a(href="{{lottery.url}}", target='_blank') {{lottery.title}}

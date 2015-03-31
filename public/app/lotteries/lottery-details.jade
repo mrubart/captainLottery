@@ -1,0 +1,12 @@
+.container
+  h1 {{lottery.title}}
+  .row
+    .col-md-6
+      h3(ng-show="lottery.active") Active
+      h3 Last draw was {{lottery.drawDate | date}}
+      
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading Links
+        .panel-body
+          a(href="{{lottery.url}}", target='_blank') {{lottery.title}}
